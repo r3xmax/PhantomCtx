@@ -53,7 +53,7 @@ When the Windows Loader resolves a DLL (via `LoadLibrary` or the import table), 
 6. Process package dependency graph  
 7 – 12. Standard file search order on disk
 
-`PhantomCtx` targets step 3: SxS manifest redirection. Activation Contexts are derived from [Side-by-Side](https://en.wikipedia.org/wiki/Side-by-side_assembly) (`.manifest`) files associated with executables, typically embedded in PE binaries. Internally, an Activation Context contains a **Table of Contents (ToC)** indexing multiple sections, including the **DLL redirection section**. The Loader typically accesses Activation Contexts through `PEB.ActivationContextData`.
+`PhantomCtx` targets step 3: **SxS manifest redirection**. Activation Contexts are derived from [Side-by-Side](https://en.wikipedia.org/wiki/Side-by-side_assembly) (`.manifest`) files associated with executables, typically embedded in PE binaries. Internally, an Activation Context contains a **Table of Contents (ToC)** indexing multiple sections, including the **DLL redirection section**. The Loader typically accesses Activation Contexts through `PEB.ActivationContextData`.
 
 Research by [Kurosh Dabbagh Escalante](https://github.com/Kudaes) showed that a malicious Activation Context can be constructed using `CreateActCtx`, written into `RW` memory in a target process, and then activated by redirecting `PEB.ActivationContextData` to the crafted structure.
 
