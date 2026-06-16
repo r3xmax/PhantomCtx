@@ -2,7 +2,7 @@
 
 PhantomCtx is a tool that automates [Activation Context](https://learn.microsoft.com/en-us/windows/win32/sbscs/activation-contexts) hijacking with the objective of loading an arbitrary DLL into the vast majority of signed executables (e.g. Microsoft, Adobe, Mozilla).
 
-The loader is presented as a modern alternative to traditional [DLL Sideloading](https://attack.mitre.org/techniques/T1574/001/): unlike conventional approaches, it does not require a vulnerable binary. The technique can be performed as long as the target executable **resolves a DLL through its Import Address Table (IAT)** or, in the worst case, via `LoadLibrary` without an absolute path.
+The loader is presented as a modern alternative to traditional [DLL Hijacking & Sideloading](https://attack.mitre.org/techniques/T1574/001/): unlike conventional approaches, it does not require a vulnerable binary. The technique can be performed as long as the target executable **resolves a DLL through its Import Address Table (IAT)** or, in the worst case, via `LoadLibrary` without an absolute path.
 
 ```c
 C:\PhantomCtx\x64>.\PhantomCtx.exe
