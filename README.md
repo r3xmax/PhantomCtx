@@ -68,7 +68,7 @@ The loader named `Eclipse`, developed as part of his research, can be found in i
 After multiple tests, `Eclipse` was detected by aggressive EDRs such as Elastic at the following points:
 
 - `Potential Suspended Process Code Injection`: suspended process creation followed by `NtWriteVirtualMemory` to copy the AC blob into the remote process.
-- `Remote Process Memory Write by Low Reputation Module`: `NtWriteVirtualMemory` without `CreateProcess` in the call stack and a low-reputation module, leading to `PEB.ActivationContextData` overwrite.
+- `Remote Process Memory Write by Low Reputation Module`: `NtWriteVirtualMemory` without `CreateProcess` in the call stack and a low-reputation module, needed for overwriting `PEB.ActivationContextData`.
 - `Remote Memory Write to Trusted Target Process`: `WriteProcessMemory` without `CreateProcess` in the call stack, restricted to system/user-installed binaries.
 
 After one day of research looking for alternative approaches to implement in `PhantomCtx`, I discovered that **the memory region of the original Activation Context is a section view mapped during process creation**. It is possible to **unmap this section view using** `NtUnmapViewOfSection` and then create a new read-only section view backed by our malicious Activation Context, mapping it at the **exact same memory address** where the original one resided.
