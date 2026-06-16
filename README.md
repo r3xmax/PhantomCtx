@@ -30,12 +30,12 @@ For a deeper dive into how it works internally and how it evades aggressive EDR 
 
 - [Internal Mechanism](#internal-mechanism)
   - [A New Method for Activation Context Hijacking Focused on EDR Evasion](#a-new-method-for-activation-context-hijacking-focused-on-edr-evasion)
+- [How to Compile](#how-to-compile)
 - [Usage: Module-Based Workflow](#usage-module-based-workflow)
   - [Recon](#recon)
   - [Spawn (recommended)](#spawn-recommended)
   - [Runtime](#runtime)
 - [Example: Activation Context Hijacking + DLL Proxying mpnotify.exe](#example-activation-context-hijacking--dll-proxying-mpnotifyexe)
-- [How to Compile](#how-to-compile)
 - [Disclaimer](#disclaimer)
 - [References](#references)
 
@@ -76,6 +76,29 @@ After one day of research looking for alternative approaches to implement in `Ph
 As a result, it is **no longer necessary** for the loader to overwrite the `PEB.ActivationContextData` pointer. This eliminates the requirement to use `NtAllocateVirtualMemory` and `NtWriteVirtualMemory`, bypassing all EDR monitoring rules related to remote process memory writes and injection.
 
 Additionally, to increase detection difficulty, `PhantomCtx` does not use `CreateActCtxW`, removing the need to handle `.manifest` files during the attack. Depending on the selected mode, it can **steal the Activation Context from another remote process** containing a valid DLL redirection section using `NtReadVirtualMemory`, reconstruct the DLL redirection entries locally, patch it, and then replace the original.
+
+# How to Compile
+
+To compile the tool, it is recommended to use Visual Studio or a compatible compiler.
+
+If using VS, open the `x64 Native Tools Command Prompt for VS`, navigate to the project root directory and compile it with `compile.bat`:
+
+```
+C:\PhantomCtx>.\compile.bat
+[*] Created output directory: x64
+[*] Compiling PhantomCtx...
+main.c
+utils.c
+recon.c
+actctx.c
+c_runtime.c
+dynamic_resolution.c
+process_utils.c
+spawn.c
+runtime.c
+Generating Code...
+[+] Build successful: x64\PhantomCtx.exe
+```
 
 # Usage: Module-Based Workflow
 
@@ -618,29 +641,6 @@ In this case, the payload DLL executes `calc.exe`. No alerts were generated.
 ![](images/image4.png)
 
 ![](images/image5.png)
-
-# How to Compile
-
-To compile the tool, it is recommended to use Visual Studio or a compatible compiler.
-
-If using VS, open the `x64 Native Tools Command Prompt for VS`, navigate to the project root directory and compile it with `compile.bat`:
-
-```
-C:\PhantomCtx>.\compile.bat
-[*] Created output directory: x64
-[*] Compiling PhantomCtx...
-main.c
-utils.c
-recon.c
-actctx.c
-c_runtime.c
-dynamic_resolution.c
-process_utils.c
-spawn.c
-runtime.c
-Generating Code...
-[+] Build successful: x64\PhantomCtx.exe
-```
 
 # Disclaimer
 
