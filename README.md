@@ -24,7 +24,7 @@ C:\PhantomCtx\x64>.\PhantomCtx.exe
         -m runtime      Perform Activation Context Hijacking on an already running process.
 ```
 
-For a deeper dive into how it works internally and how it evades aggressive EDR solutions, check out the post on [my personal blog](https://rexmax.dev/posts/phantomctx-new-approach-to-activation-context-hijacking-for-edr-evasion/).
+For a deeper dive into how it works internally and how it evades aggressive EDR solutions, check out the post on [my technical blog](https://rexmax.dev/posts/phantomctx-new-approach-to-activation-context-hijacking-for-edr-evasion/).
 
 # Table of Contents
 
