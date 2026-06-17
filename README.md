@@ -647,13 +647,13 @@ In this case, the payload DLL executes `calc.exe`. No alerts were generated.
 This tool was developed for **personal educational purposes** and is intended exclusively 
 for security professionals and red team operators working in **authorized environments**.
 
+The use of PhantomCtx against systems without explicit permission is **illegal** and 
+strictly prohibited. The author takes no responsibility for any misuse or damage caused 
+by this tool.
+
 # References
 - [Activation Context Hijack by Kurosh Dabbagh - Navaja Conference](https://www.youtube.com/watch?v=qu4fXWKjabY)
 - [Activation Context Hijack ‘Eclipse’ Loader](https://github.com/Kudaes/Eclipse)
 - [NtDoc](https://ntdoc.m417z.com/)
 - [ReactOS Source Code](https://github.com/reactos/reactos)
 - [Windows Internals Book](https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals)
-
-The use of PhantomCtx against systems without explicit permission is **illegal** and 
-strictly prohibited. The author takes no responsibility for any misuse or damage caused 
-by this tool.
