@@ -85,8 +85,8 @@ If using VS, open the `x64 Native Tools Command Prompt for VS`, navigate to the 
 
 ```
 C:\PhantomCtx>.\compile.bat
-[*] Created output directory: x64
-[*] Compiling PhantomCtx...
+[INFO] Created output directory: x64
+[INFO] Compiling PhantomCtx...
 main.c
 utils.c
 recon.c
@@ -97,7 +97,7 @@ process_utils.c
 spawn.c
 runtime.c
 Generating Code...
-[+] Build successful: x64\PhantomCtx.exe
+[SUCCESSFUL] Build successful: x64\PhantomCtx.exe
 ```
 
 # Usage: Module-Based Workflow
