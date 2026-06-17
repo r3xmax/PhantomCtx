@@ -14,7 +14,7 @@ set OUT_OBJ=%OUT_DIR%\
 
 if not exist %OUT_DIR% (
     mkdir %OUT_DIR%
-    echo [*] Created output directory: %OUT_DIR%
+    echo [INFO] Created output directory: %OUT_DIR%
 )
 
 echo [INFO] Compiling PhantomCtx...
